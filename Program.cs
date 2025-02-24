@@ -5,36 +5,45 @@
         Дано натуральное число  1 ≤ n ≤ 9999, определяющее стоимость товара в копейках.
         Выразить стоимость в рублях и копейках, например, 3 рубля 21 копейка, 15 рублей 5 копеек, 1 рубль ровно и т. п.
     */
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             string input;
             string output;
 
-            Console.Write("Введите количество копеек от 1 до 9999: ");
-            input = Console.ReadLine();
+            do
+            {
+                Console.Write("Введите количество копеек от 1 до 9999: ");
+                input = Console.ReadLine();
+            } while (!isInputValid(input));
 
             output = Logic.ComputeKopeikas(input);
 
             Console.WriteLine(output);
+        }
+        public static bool isInputValid(string input)
+        {
+            if (int.TryParse(input, out int amount))
+            {
+                if (amount < 1 || amount > 9999)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            return true;
         }
     }
     public class Logic
     {
         public static string ComputeKopeikas(string input)
         {
-            if (int.TryParse(input, out int amount))
-            {
-                if (amount < 1 || amount > 9999)
-                {
-                    return "Введите число от 1 до 9999.";
-                }
-            }
-            else
-            {
-                return "Введите целое натуральное число.";
-            }
+            int amount = int.Parse(input);
 
             int rubles = amount / 100;
             int kopeiki = amount % 100;
