@@ -1,0 +1,132 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using lab1_Agalakov_ISTb_23_2;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
+
+namespace lab1_Agalakov_ISTb_23_2.Tests
+{
+    [TestClass()]
+    public class LogicTests
+    {
+        [TestMethod()]
+        public void isInputValidYes()
+        {
+            bool output;
+            output = Program.isInputValid("1000");
+
+            Assert.AreEqual(true, output);
+        }
+
+        [TestMethod()]
+        public void isInputValidBigger()
+        {
+            bool output;
+            output = Program.isInputValid("999999");
+
+            Assert.AreEqual(false, output);
+        }
+
+        [TestMethod()]
+        public void isInputValidLess()
+        {
+            bool output;
+            output = Program.isInputValid("-1212");
+
+            Assert.AreEqual(false, output);
+        }
+
+        [TestMethod()]
+        public void isInputValidNotInt()
+        {
+            bool output;
+            output = Program.isInputValid("notInt");
+
+            Assert.AreEqual(false, output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasFirst()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("4151");
+
+            Assert.AreEqual("41 рубль 51 копейка", output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasSecond()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("5112");
+
+            Assert.AreEqual("51 рубль 12 копеек", output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasThird()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("6152");
+
+            Assert.AreEqual("61 рубль 52 копейки", output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasFourth()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("2251");
+
+            Assert.AreEqual("22 рубля 51 копейка", output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasFiveth()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("3414");
+
+            Assert.AreEqual("34 рубля 14 копеек", output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasSixth()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("4342");
+
+            Assert.AreEqual("43 рубля 42 копейки", output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasSeventh()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("9501");
+
+            Assert.AreEqual("95 рублей 1 копейка", output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasEighth()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("4647");
+
+            Assert.AreEqual("46 рублей 47 копеек", output);
+        }
+
+        [TestMethod()]
+        public void ComputeKopeikasNineth()
+        {
+            string output;
+            output = Logic.ComputeKopeikas("7862");
+
+            Assert.AreEqual("78 рублей 62 копейки", output);
+        }
+    }
+}
